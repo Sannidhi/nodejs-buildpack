@@ -148,5 +148,8 @@ install_oracledb() {
  unzip -qq -d $dir/vendor/oracle
  ln -s libclntsh.so.12.1 $dir/vendor/oracle/instantclient/libclntsh.so
 
+ export OCI_LIB_DIR=$dir/vendor/oracle/instantclient
+ export OCI_INC_DIR=$dir/vendor/oracle/instantclient/sdk/include
+
  npm install oracledb
 }
