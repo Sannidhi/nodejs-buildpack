@@ -138,14 +138,15 @@ install_oracledb() {
 
  echo "Installing Oracle instant and basic clients"
  local basic_rpm="instantclient-basic-linux.x64-12.2.0.1.0.zip"
- echo "$basic_rpm"
  local sdk_rpm="instantclient-sdk-linux.x64-12.2.0.1.0.zip"
- echo "$sdk_rpm"
  local download_url="https://oracle-file-holder.cfapps.io"
+ echo "All the variables: "
  echo "$download_url"
+ echo "$sdk_rpm"
+ echo "$basic_rpm"
 
- curl -o /tmp/basic_rpm "$download_url"/"$basic_rpm"
- curl -o /tmp/sdk_rpm "$download_url"/"$sdk_rpm"
+ curl -o /tmp/cache "$download_url"/"$basic_rpm"
+ curl -o /tmp/cache "$download_url"/"$sdk_rpm"
 
  unzip -qq /tmp/basic_rpm -d $dir/vendor/oracle
  unzip -qq /tmp/sdk_rpm -d $dir/vendor/oracle
