@@ -141,8 +141,8 @@ install_oracledb() {
  local sdk_rpm="instantclient-sdk-linux.x64-12.2.0.1.0.zip"
  local download_url="https://oracle-file-holder.cfapps.io"
 
- curl -o "$download_url"/"$basic_rpm"
- curl -o "$download_url"/"$sdk_rpm"
+ curl -o /tmp "$download_url"/"$basic_rpm"
+ curl -o /tmp "$download_url"/"$sdk_rpm"
 
  unzip -qq -d $dir/vendor/oracle
  unzip -qq -d $dir/vendor/oracle
