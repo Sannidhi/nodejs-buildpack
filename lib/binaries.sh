@@ -132,3 +132,8 @@ install_npm() {
     fi
   fi
 }
+
+install_oracledb() {
+    npm install instantclient
+    npm install oracledb
+}

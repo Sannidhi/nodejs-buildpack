@@ -76,6 +76,10 @@ install_bins() {
     install_npm "$npm_engine" "$DEPS_DIR/$DEPS_IDX/node"
   fi
 
+  #Install Oracle-Node driver
+  echo "Installing oracle driver and its dependencies:"
+  install_oracledb
+
   ## Install Yarn
   install_yarn "$DEPS_DIR/$DEPS_IDX/yarn" "$yarn_engine"
 }
