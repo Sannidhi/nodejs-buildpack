@@ -152,7 +152,6 @@ install_oracledb() {
  export OCI_INC_DIR="$dir/vendor/oracle/instantclient_12_2/sdk/include"
  export LD_LIBRARY_PATH="$dir/vendor/oracle/instantclient_12_2"
  echo "debugging.. "
- set -o posix ; set
-
+ ls -alh /tmp/app/vendor/oracle/instantclient_12_2
  npm install oracledb
 }
