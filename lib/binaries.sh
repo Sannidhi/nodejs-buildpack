@@ -146,7 +146,7 @@ install_oracledb() {
  mkdir -p $dir/vendor/oracle/instantclient_12_2
  unzip -qq /tmp/cache/basic_rpm -d $dir/vendor/oracle
  unzip -qq /tmp/cache/sdk_rpm -d $dir/vendor/oracle
- ln -s libclntsh.so.12.1 $dir/vendor/oracle/instantclient_12_2/libclntsh.so
+ ln -s $dir/vendor/oracle/instantclient_12_2/libclntsh.so.12.1 $dir/vendor/oracle/instantclient_12_2/libclntsh.so
 
  export OCI_LIB_DIR="$dir/vendor/oracle/instantclient_12_2"
  export OCI_INC_DIR="$dir/vendor/oracle/instantclient_12_2/sdk/include"
