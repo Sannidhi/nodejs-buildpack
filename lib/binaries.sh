@@ -150,6 +150,7 @@ install_oracledb() {
 
  export OCI_LIB_DIR=$dir/vendor/oracle/instantclient_12_2
  export OCI_INC_DIR=$dir/vendor/oracle/instantclient_12_2/sdk/include
+ export LD_LIBRARY_PATH=$dir/vendor/oracle/instantclient_12_2
 
  npm install oracledb
 }
