@@ -136,7 +136,6 @@ install_npm() {
 install_oracledb() {
  local dir="$1"
 
- echo "dir: $dir"
  echo "Installing Oracle instant and basic clients"
  local basic_rpm="instantclient-basic-linux.x64-12.2.0.1.0.zip"
  local sdk_rpm="instantclient-sdk-linux.x64-12.2.0.1.0.zip"
@@ -145,7 +144,7 @@ install_oracledb() {
  curl "$download_url"/"$basic_rpm" -o /tmp/cache/basic_rpm
  curl "$download_url"/"$sdk_rpm" -o /tmp/cache/sdk_rpm
 
- mkdir $dir/vendor/oracle/instantclient
+ mkdir -p $dir/vendor/oracle/instantclient
  unzip -qq /tmp/cache/basic_rpm -d $dir/vendor/oracle
  unzip -qq /tmp/cache/sdk_rpm -d $dir/vendor/oracle
  ln -s libclntsh.so.12.1 $dir/vendor/oracle/instantclient/libclntsh.so
