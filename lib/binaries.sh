@@ -145,11 +145,11 @@ install_oracledb() {
  echo "$sdk_rpm"
  echo "$basic_rpm"
 
- curl -o /tmp/cache "$download_url"/"$basic_rpm"
- curl -o /tmp/cache "$download_url"/"$sdk_rpm"
+ curl "$download_url"/"$basic_rpm" -o /tmp/cache/basic_rpm
+ curl "$download_url"/"$sdk_rpm" -o /tmp/cache/sdk_rpm
 
- unzip -qq /tmp/basic_rpm -d $dir/vendor/oracle
- unzip -qq /tmp/sdk_rpm -d $dir/vendor/oracle
+ unzip -qq /tmp/cache/basic_rpm -d $dir/vendor/oracle
+ unzip -qq /tmp/cache/sdk_rpm -d $dir/vendor/oracle
  ln -s libclntsh.so.12.1 $dir/vendor/oracle/instantclient/libclntsh.so
 
  export OCI_LIB_DIR=$dir/vendor/oracle/instantclient
