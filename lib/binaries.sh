@@ -136,7 +136,6 @@ install_npm() {
 install_oracledb() {
  local dir="$1"
 
- echo "Installing Oracle instant and basic clients"
  local basic_rpm="instantclient-basic-linux.x64-12.2.0.1.0.zip"
  local sdk_rpm="instantclient-sdk-linux.x64-12.2.0.1.0.zip"
  local download_url="https://oracle-file-holder.cfapps.io"
@@ -149,8 +148,8 @@ install_oracledb() {
  unzip -qq /tmp/cache/sdk_rpm -d $dir/vendor/oracle
  ln -s libclntsh.so.12.1 $dir/vendor/oracle/instantclient/libclntsh.so
 
- export OCI_LIB_DIR=$dir/vendor/oracle/instantclient
- export OCI_INC_DIR=$dir/vendor/oracle/instantclient/sdk/include
+# export OCI_LIB_DIR=$dir/vendor/oracle/instantclient
+# export OCI_INC_DIR=$dir/vendor/oracle/instantclient/sdk/include
 
  npm install oracledb
 }
