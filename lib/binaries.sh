@@ -149,12 +149,6 @@ install_oracledb() {
  ln -s $dir/vendor/oracle/instantclient_12_2/libclntsh.so.12.1 $dir/vendor/oracle/instantclient_12_2/libclntsh.so
 
  OCI_LIB_DIR="$dir/vendor/oracle/instantclient_12_2" OCI_INC_DIR="$dir/vendor/oracle/instantclient_12_2/sdk/include" LD_LIBRARY_PATH="$dir/vendor/oracle/instantclient_12_2" npm install oracledb
- local current_dir=`pwd`
- cd $dir
  echo "debugging.. "
  set -o posix ; set
- npm install oracledb
-
- cd $current_dir
-
 }
