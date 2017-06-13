@@ -148,9 +148,7 @@ install_oracledb() {
  unzip -qq /tmp/cache/sdk_rpm -d $dir/vendor/oracle
  ln -s $dir/vendor/oracle/instantclient_12_2/libclntsh.so.12.1 $dir/vendor/oracle/instantclient_12_2/libclntsh.so
 
- export OCI_LIB_DIR="$dir/vendor/oracle/instantclient_12_2"
- export OCI_INC_DIR="$dir/vendor/oracle/instantclient_12_2/sdk/include"
- export LD_LIBRARY_PATH="$dir/vendor/oracle/instantclient_12_2"
+ OCI_LIB_DIR="$dir/vendor/oracle/instantclient_12_2" OCI_INC_DIR="$dir/vendor/oracle/instantclient_12_2/sdk/include" LD_LIBRARY_PATH="$dir/vendor/oracle/instantclient_12_2" npm install oracledb
  echo "debugging.. "
  ls -alh /tmp/app/vendor/oracle/instantclient_12_2
  npm install oracledb
