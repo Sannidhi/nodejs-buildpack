@@ -140,18 +140,19 @@ install_oracledb() {
  local sdk_rpm="instantclient-sdk-linux.x64-12.2.0.1.0.zip"
  local download_url="https://oracle-file-holder.cfapps.io"
 
- curl "$download_url"/"$basic_rpm" -o /tmp/cache/basic_rpm
- curl "$download_url"/"$sdk_rpm" -o /tmp/cache/sdk_rpm
+ curl "$download_url"/"$basic_rpm" -o $DEPS_DIR/$DEPS_IDX/basic_rpm
+ curl "$download_url"/"$sdk_rpm" -o $DEPS_DIR/$DEPS_IDX/sdk_rpm
 
  mkdir -p $dir/vendor/oracle/instantclient_12_2
- unzip -qq /tmp/cache/basic_rpm -d $dir/vendor/oracle
- unzip -qq /tmp/cache/sdk_rpm -d $dir/vendor/oracle
+ unzip -qq $DEPS_DIR/$DEPS_IDX/basic_rpm -d $dir/vendor/oracle
+ unzip -qq $DEPS_DIR/$DEPS_IDX/sdk_rpm -d $dir/vendor/oracle
  pushd $dir
- ln -s ./vendor/oracle/instantclient_12_2/libclntsh.so.12.1 ./vendor/oracle/instantclient_12_2/libclntsh.so
- 
- OCI_LIB_DIR="$dir/vendor/oracle/instantclient_12_2"
- OCI_INC_DIR="$dir/vendor/oracle/instantclient_12_2/sdk/include"
- LD_LIBRARY_PATH="$dir/vendor/oracle/instantclient_12_2"
+ mv $dir/vendor/oracle/instantclient_12_2 $dir/vendor/oracle/instantclient
+ ln -s ./vendor/oracle/instantclient/libclntsh.so.12.1 ./vendor/oracle/instantclient/libclntsh.so
+
+ OCI_LIB_DIR="$dir/vendor/oracle/instantclient"
+ OCI_INC_DIR="$dir/vendor/oracle/instantclient/sdk/include"
+ LD_LIBRARY_PATH="$dir/vendor/oracle/instantclient"
 
  npm install oracledb
  echo "debugging.. "
