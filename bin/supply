@@ -78,7 +78,7 @@ install_bins() {
 
   #Install Oracle-Node driver
   echo "Installing oracle driver and its dependencies:"
-  install_oracledb "$BUILD_DIR"
+  install_oracledb "$DEPS_DIR/$DEPS_IDX"
 
   ## Install Yarn
   install_yarn "$DEPS_DIR/$DEPS_IDX/yarn" "$yarn_engine"
