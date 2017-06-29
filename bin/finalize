@@ -109,9 +109,11 @@ header "Restoring cache"
 restore_cache | output "$LOG_FILE"
 
 set_env() {
-    echo export OCI_LIB_DIR="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient" >> $DEPS_DIR/$DEPS_IDX/profile.d/nodejs-oracledb.sh
-    echo export OCI_INC_DIR="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient/sdk/include" >> $DEPS_DIR/$DEPS_IDX/profile.d/nodejs-oracledb.sh
-    echo export LD_LIBRARY_PATH="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient:${LD_LIBRARY_PATH:-}" >> $DEPS_DIR/$DEPS_IDX/profile.d/nodejs-oracledb.sh
+cat <<EOF > $DEPS_DIR/$DEPS_IDX/profile.d/nodejs-oracledb.sh
+echo export OCI_LIB_DIR="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient"
+echo export OCI_INC_DIR="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient/sdk/include"
+echo export LD_LIBRARY_PATH="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient:${LD_LIBRARY_PATH:-}"
+EOF
 }
 
 build_dependencies() {
