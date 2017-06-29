@@ -128,6 +128,7 @@ build_dependencies() {
 
 header "Building dependencies"
 build_dependencies | output "$LOG_FILE"
+set_env
 
 cache_build() {
   local cache_directories=$(get_cache_directories)
@@ -165,7 +166,6 @@ summarize_build() {
 $BP_DIR/compile-extensions/bin/write_profiled_from_supply $DEPS_DIR $BUILD_DIR
 header "Build succeeded!"
 $BP_DIR/compile-extensions/bin/store_buildpack_metadata $BP_DIR $CACHE_DIR
-set_env
 summarize_build | output "$LOG_FILE"
 
 warn_no_start "$LOG_FILE"
