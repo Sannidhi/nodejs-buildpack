@@ -67,3 +67,24 @@ Open an issue on this project
 ### Active Development
 
 The project backlog is on [Pivotal Tracker](https://www.pivotaltracker.com/projects/1042066)
+
+### Debugging custom buildpack
+
+1. Mount your app in readonly mode on docker 
+    ```
+    docker run -it -v path_to_node_app:/app2 -v /path_to_buildpack/nodejs-buildpack:/bp cloudfoundry/cflinuxfs2 bash
+    ```
+    
+2. Run the following command 
+
+    <pre>
+    export CF_STACK=cflinuxfs2 && cp -r /app2 /buildDir && ./bp/bin/supply /buildDir /cache /deps 0
+    </pre>
+    
+    The first command is setting up the stack, the 2nd command copies the app in a buildDir so that we can replicate the 
+    steps without changing the app directory and the last command runs the supply script with arguments build directory, 
+    cache dir and dependency dir in that order.
+    
+3. If step 2 fails, make the nexcessary changes to the buildpack locally.
+
+4. Exit out of the docker shell and follow steps 1, 2 again. 
