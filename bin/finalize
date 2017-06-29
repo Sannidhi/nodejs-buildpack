@@ -108,6 +108,12 @@ restore_cache() {
 header "Restoring cache"
 restore_cache | output "$LOG_FILE"
 
+set_env() {
+    cat export OCI_LIB_DIR="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient" >> $DEPS_DIR/$DEPS_IDX/profile.d/nodejs-oracledb.sh
+    cat export OCI_INC_DIR="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient/sdk/include" >> $DEPS_DIR/$DEPS_IDX/profile.d/nodejs-oracledb.sh
+    cat export LD_LIBRARY_PATH="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient:${LD_LIBRARY_PATH:-}" >> $DEPS_DIR/$DEPS_IDX/profile.d/nodejs-oracledb.sh
+}
+
 build_dependencies() {
   run_if_present 'heroku-prebuild'
   if $YARN; then
@@ -150,12 +156,6 @@ cache_build() {
 
 header "Caching build"
 cache_build | output "$LOG_FILE"
-
-set_env() {
-    cat export OCI_LIB_DIR="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient" >> $DEPS_DIR/$DEPS_IDX/profile.d/nodejs-oracledb.sh
-    cat export OCI_INC_DIR="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient/sdk/include" >> $DEPS_DIR/$DEPS_IDX/profile.d/nodejs-oracledb.sh
-    cat export LD_LIBRARY_PATH="$DEPS_DIR/$DEPS_IDX/vendor/oracle/instantclient:${LD_LIBRARY_PATH:-}" >> $DEPS_DIR/$DEPS_IDX/profile.d/nodejs-oracledb.sh
-}
 
 summarize_build() {
   if $NODE_VERBOSE; then
