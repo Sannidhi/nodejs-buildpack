@@ -148,5 +148,5 @@ install_oracledb() {
  unzip -qq $DEPS_DIR/$DEPS_IDX/sdk_rpm -d $dir/vendor/oracle
  mv $dir/vendor/oracle/instantclient_12_2 $dir/vendor/oracle/instantclient
  pushd $dir/vendor/oracle/instantclient
- ln -s libclntsh.so.12.1 libclntsh.so
+ cp libclntsh.so.12.1 libclntsh.so
 }
